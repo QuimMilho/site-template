@@ -27,7 +27,7 @@ export default class extends React.Component {
                                 </div>
                             }
                         >
-                            <Route path="/1" element={<div />}></Route>
+                            <Route path="1" element={<div />}></Route>
                         </Route>
 
                         <Route path="*"></Route>
