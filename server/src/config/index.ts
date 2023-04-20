@@ -79,7 +79,7 @@ export class Config {
     //Correction Methods
 
     correctConfig(
-        errors: ("ok" | "no" | "bot" | "server" | "db" | "guilds")[]
+        errors: ("ok" | "no" | "server" | "db")[]
     ) {
         if (errors.includes("server")) {
             this.logger.error("Invalid Server's config!");
@@ -93,10 +93,10 @@ export class Config {
 
     //Verify whole config
 
-    verifyConfig(): ("ok" | "no" | "bot" | "server" | "db")[] {
+    verifyConfig(): ("ok" | "no" | "server" | "db")[] {
         if (!fs.existsSync(this.configPath)) return ["no"];
         this.load();
-        const err: ("ok" | "no" | "bot" | "server" | "db")[] = [];
+        const err: ("ok" | "no" | "server" | "db")[] = [];
         if (!this.verifyServerConfig()) err.push("server");
         if (!this.verifyDatabaseConfig()) err.push("db");
         if (err.length === 0) err.push("ok");
@@ -155,14 +155,14 @@ export class Config {
             port = "3306";
             this.logger.info("Using default database port");
         }
-        let database = this.logger.getInfo("Insert database name [bot]");
+        let database = this.logger.getInfo("Insert database name [server]");
         if (database.length === 0) {
-            database = "bot";
+            database = "server";
             this.logger.info("Using default database name");
         }
-        let user = this.logger.getInfo("Insert database username [bot]");
+        let user = this.logger.getInfo("Insert database username [server]");
         if (user.length === 0) {
-            user = "bot";
+            user = "server";
             this.logger.info("Using default database username");
         }
         let password = this.logger.getInfo("Insert database password");
