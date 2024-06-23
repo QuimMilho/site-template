@@ -2,3 +2,4 @@ public
 logs
 dist
 config.json
+/node_modules
